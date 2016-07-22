@@ -1,0 +1,6 @@
+<h1>Editing Listing</h1>
+
+<%= form_for @listing do |f| %>
+	<%= render partial: 'listings/form', object: f %>
+	<p><%= button_to 'Update Listing' %></p>
+<% end %>

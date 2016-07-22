@@ -1,0 +1,9 @@
+<div class="listing-create">
+	<h2>Become PairBnB Host</h2>
+	<p>List Your Space</p>
+
+	<%= form_for @listing do |form| %>
+		<%= render partial: 'listings/form', object: form %>
+		<%= button_to 'Finish the Listing', listings_path %><br>
+	<% end %>
+</div>
