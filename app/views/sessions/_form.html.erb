@@ -12,13 +12,15 @@
   <div class="submit-field">
     <%= form.submit %>
   </div>
+  <%= link_to t(".forgot_password"), new_password_path %>
 
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
+      <%= link_to t(".sign_up"), sign_up_path %><br>
     <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
+    <a href="/auth/facebook">Log in with Facebook</a><br>
+    
   </div>
 <% end %>
 
-<a href="/auth/facebook">Log in with Facebook</a>
+

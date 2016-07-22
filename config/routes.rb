@@ -20,10 +20,12 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :users, only: [:show, :edit, :update, :destroy] 
 
+  resources :listings
 
+  # put "/listings/:id" => "listings#update", as: "update_listing"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  # get "/listings/new" => "listings#new"
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
