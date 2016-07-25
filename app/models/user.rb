@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
       
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
-    	byebug
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
       u.encrypted_password = SecureRandom.hex(5)

@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'tags/new'
+
+  get 'tags/create'
+
+  get 'tags/edit'
+
+  get 'tags/update'
+
+  get 'tags/destroy'
+
+  get 'tags/index'
+
+  get 'tags/show'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -19,7 +33,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :users, only: [:show, :edit, :update, :destroy] 
-
+  resources :tags, only: [:show, :index, :destroy, :edit, :update]
   resources :listings
 
   # put "/listings/:id" => "listings#update", as: "update_listing"

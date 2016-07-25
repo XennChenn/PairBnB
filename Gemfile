@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'filterrific'
 #user authentication
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'clearance'
-
+gem 'carrierwave'
 #bootstrap
 gem 'bootstrap-sass', '~>3.3.5'
 gem 'autoprefixer-rails'

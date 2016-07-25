@@ -15,6 +15,10 @@ before_action :require_login, only: [:new, :create, :edit, :update]
 		@listing = current_user.listings.new(listing_params)
 
 		if @listing.save
+			@taglist = []
+			@taglist = params[:listing][:tags]
+			@listing.tags << Tag.find_or_create_by(property_type: @taglist["property_type"], cancellation: @taglist["cancellation"])
+		
 			redirect_to listings_path(@listing)
 		else
 			render :new #render app/views/listings/new.html.erb the form again
@@ -30,6 +34,10 @@ before_action :require_login, only: [:new, :create, :edit, :update]
 	def update
 		# @listing = Listing.find(params[:id])
 		if @listing.update(listing_params)
+			@taglist = []
+			@taglist = params[:listing][:tags]
+			@listing.tags.update(property_type: @taglist["property_type"], cancellation: @taglist["cancellation"])
+		
 			redirect_to listing_path(@listing)
 		else
 			render :edit
@@ -55,10 +63,15 @@ before_action :require_login, only: [:new, :create, :edit, :update]
 private 
 
 	def listing_params
-		params.require(:listing).permit(:title, :bedroom, :bathroom, :checkin, :checkout, :number_of_guest, :description, :rule, :price, :user_id)
+		params.require(:listing).permit(:title, :bedroom, :bathroom, :checkin, :checkout, :number_of_guest, :description, :rule, :price, :user_id, :image)
 	end
 
 	def set_listing
 		@listing = Listing.find(params[:id])
 	end
+
+	def tag_params
+		params.require(:tag).permit(:property_type, :cancellation)
+	end
+
 end

@@ -2,8 +2,17 @@
 	<h2>Become PairBnB Host</h2>
 	<p>List Your Space</p>
 
-	<%= form_for @listing do |form| %>
-		<%= render partial: 'listings/form', object: form %>
+	<%= form_for @listing, :html => {:multipart => true} do |form| %>
+		<%= render partial: 'listings/form', object: form%>
+		<%= form.label :tag %><br>
+		<%= form.fields_for :tags do |x| %>
+			<%= form.label :Property_Type %>
+			<%= x.select :property_type, ['None', 'Apartment', 'House', 'Room', 'Shared Room']%><br>
+			<%= form.label :Cancellation %>
+			<%= x.select :cancellation, ['None', 'Strict', 'Moderate', 'Flexible'] %><br>
+	<br>
+		<% end %>
 		<%= button_to 'Finish the Listing', listings_path %><br>
 	<% end %>
+	<%= link_to '<<Back to Listing', listings_path %>
 </div>
