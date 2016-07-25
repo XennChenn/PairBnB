@@ -13,10 +13,12 @@
     
   	</div>
 		     <a href="/auth/facebook">Log in with Facebook</a>
-		<% end %>
+	
 
 	    <div id="flash">
 	     	<% flash.each do |key, value| %>
 	        	<div class="flash <%= key %>"><%= value %></div>
 	      	<% end %>
 	    </div>
+
+	    <%= link_to 'Listing Page', listings_path %>

@@ -1,4 +1,14 @@
+<% if signed_in? %>
+		Signed in as: <%= current_user.email %>
+		<%= button_to 'Sign out', sign_out_path, method: :delete %>
+	<% else %>
+		<%= link_to 'Sign in', sign_in_path %><br>
+	<% end %>
+
 <%= link_to 'Create Listing', new_listing_path %>
+
+
+
 
 <table>
 	<tr>
@@ -11,6 +21,8 @@
 		<th>Description</th>
 		<th>Rule</th>
 		<th>Price</th>
+		<th>Property Type</th>
+		<th>Cancellation</th>
 	</tr>
 	
 	<% @listing.each do |x| %>
@@ -24,6 +36,10 @@
 			<td><%= x.description %></td>
 			<td><%= x.rule %></td>
 			<td><%= x.price %></td>
+			<% x.tags.each do |tag| %>
+				<td><%= tag.property_type %></td>
+				<td><%= tag.cancellation %></td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>
